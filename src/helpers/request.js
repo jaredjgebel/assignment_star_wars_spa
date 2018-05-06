@@ -2,13 +2,13 @@ const headers = new Headers()
 headers.append("Content-Type", "application/json")
 
 const getRequest = (resource, id, query) => {
+	const baseUrl = `https://swapi.co/api`
 	const rId = id ? `/${id}` : ''
 	const rQuery = query ? `/?${query}` : ''
 
-	console.log(`https://swapi.co/api/${resource}${rId}${rQuery}`)
-
+	// error handling in component with call
 	return new Promise((resolve) => {
-		fetch(`https://swapi.co/api/${resource}${rId}${rQuery}`)
+		fetch(`${baseUrl}/${resource}${rId}${rQuery}`)
 			.then(response => {
 				if (!response.ok) {
 					return {
