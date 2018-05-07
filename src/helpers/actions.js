@@ -68,52 +68,75 @@ export const GET_SINGLE_ENTRY_SUCCESS = "GET_SINGLE_ENTRY_SUCCESS"
 export const GET_SINGLE_ENTRY_FAILURE = "GET_SINGLE_ENTRY_FAILURE"
 export const PREV_PAGE = "PREV_PAGE"
 export const NEXT_PAGE = "NEXT_PAGE"
+export const GET_NEW_PAGE = "GET_NEW_PAGE"
 
 export function getEntries() {
-   return {
-      type: GET_ENTRIES,
-   }
+	return {
+		type: GET_ENTRIES,
+	}
 }
 
 export function getEntriesSuccess(data) {
-   return {
-      type: GET_ENTRIES_SUCCESS,
-      data,
-   }
+	return {
+		type: GET_ENTRIES_SUCCESS,
+		data,
+	}
 }
 
 export function getEntriesFailure(error) {
-   return {
-      type: GET_ENTRIES_FAILURE,
-      error,
-   }
+	return {
+		type: GET_ENTRIES_FAILURE,
+		error,
+	}
 }
 
 export function previousPage(data) {
-   return {
-      type: PREV_PAGE,
-      data,
-   }
+	return {
+		type: PREV_PAGE,
+		data,
+	}
 }
 
 export function getInitialData() {
-   return (dispatch) => {
-      dispatch(getEntries())
+	return (dispatch) => {
+		dispatch(getEntries())
 
-      const url = `https://swapi.co/api/planets`
+		const resourceType = 'planets'
+		const url = `https://swapi.co/api/${resourceType}`
 
-      fetch(`${url}`)
-         .then(response => {
-            if (!response.ok) {
-               throw new Error(`${response.status} ${response.statusText}`)
-            }
-            return response.json()
-         })
-         .then(json => {
-            dispatch(getEntriesSuccess(json.data))
-         })
-         .catch(error => {
-            dispatch(getEntriesFailure(error))
-         })
-   }
+		fetch(`${url}`)
+			.then(response => {
+				if (!response.ok) {
+					throw new Error(`${response.status} ${response.statusText}`)
+				}
+				return response.json()
+			})
+			.then(json => {
+				dispatch(getEntriesSuccess(json))
+			})
+			.catch(error => {
+				dispatch(getEntriesFailure(error))
+			})
+	}
+}
+
+// "https://swapi.co/api/planets/?page=2"
+export function getNewPage(resourceType, page) {
+	return (dispatch) => {
+		const url = `https://swapi.co/api/${resourceType}/?page=${page}`
+
+		fetch(`${url}`)
+			.then(response => {
+				if (!response.ok) {
+					throw new Error(`${response.status} ${response.statusText}`)
+				}
+				return response.json()
+			})
+			.then(json => {
+				dispatch(getEntriesSuccess(json))
+			})
+			.catch(error => {
+				dispatch(getEntriesFailure(error))
+			})
+	}
 }
