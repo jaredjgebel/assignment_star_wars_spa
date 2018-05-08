@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import './Planets.css'
 
 const Planets = ({ entries }) => {
    if (!entries[0]) {
@@ -14,17 +15,19 @@ const Planets = ({ entries }) => {
    const planets = entries.map((planet, index) => {
       return (
 
-         <div className="planet" key={planet.name}>
-            <h2>{`${entries[index].name}`}</h2>
-            <ul>
+         <div className="planet card" key={planet.name}>
+            <div className="card-header bg-dark">
+               <h2 className="card-title">{`${entries[index].name}`}</h2>
+            </div>
+            <ul className="list-unstyled card-body">
                <li>Population: {`${entries[index].population}`}</li>
                <li>Rotation Period: {`${entries[index].rotation_period}`}</li>
-               <li>Orbital Period: {`${entries[index].orbital_period}`}</li>
+               {/* <li>Orbital Period: {`${entries[index].orbital_period}`}</li> */}
                <li>Climate: {`${entries[index].climate}`}</li>
-               <li>Terrain: {`${entries[index].terrain}`}</li>
+               {/* <li>Terrain: {`${entries[index].terrain}`}</li> */}
                <li>Diameter: {`${entries[index].diameter}`}</li>
                <li>Gravity: {`${entries[index].gravity}`}</li>
-               <li>Surface Water: {`${entries[index].terrain}`}</li>
+               {/* <li>Surface Water: {`${entries[index].terrain}`}</li> */}
 
             </ul>
 
@@ -32,9 +35,11 @@ const Planets = ({ entries }) => {
       )
    })
    return (
-      <div className="all-entries">
+      <div className="all-entries container">
          <h1>Planets</h1>
-         {planets}
+         <div className="flex-wrapper">
+            {planets}
+         </div>
       </div>
    )
 }

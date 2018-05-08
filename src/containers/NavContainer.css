@@ -1,0 +1,11 @@
+.nav-link {
+   color: goldenrod;
+}
+
+.nav-link:hover {
+   color: darkgoldenrod;
+}
+
+button {
+   margin: 0px 5px 0px 5px;
+}

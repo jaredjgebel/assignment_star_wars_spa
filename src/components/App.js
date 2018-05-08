@@ -6,13 +6,18 @@ import {
   Route,
 } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.css'
-import NavContainer from './NavLinks';
+import NavContainer from '../containers/NavContainer';
 import PagesContainer from '../containers/PagesContainer'
 import Planets from './Planets'
 
 const App = ({ entries, pages, singleEntry, ui }) => (
   <Router>
-    <div>
+    <div className="app container-fluid">
+      <div className="row">
+        <div className="app-header bg-dark col-12">
+          <h1 className="display-4">Star Wars Encyclopedia</h1>
+        </div>
+      </div>
       <NavContainer />
 
       <Route

@@ -1,0 +1,10 @@
+.flex-wrapper {
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   grid-column-gap: 5px;
+   grid-row-gap: 5px;
+}
+
+.card-title {
+   color: cadetblue;
+}
