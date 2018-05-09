@@ -1,13 +1,18 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-const MiddleButton = ({ pageNumber, active, currentPath }) => {
-   const href = `${currentPath}/pages/${pageNumber}`
+const MiddleButton = ({ pageNumber, active, resourceType }) => {
+   // console.log('resource ', resourceType)
+   // console.log('page number ', pageNumber)
+   const href = `/${resourceType}/pages/${pageNumber}`
    const liClass = active ? 'page-item active' : 'page-item'
 
    return (
       <li className={liClass}>
-         <a className="page-link" href={href}>{pageNumber}</a>
-      </li>
+         <Link to={`${href}`} className="page-link">
+            {pageNumber}
+         </Link>
+      </li >
    )
 }
 

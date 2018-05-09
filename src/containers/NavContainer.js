@@ -9,7 +9,7 @@ export default function NavContainer() {
             <div className="nav-item">
                <button className="btn btn-dark col">
                   <NavLink
-                     exact to="/people"
+                     exact to="/people/pages/1"
                      activeClassName="active"
                      className="nav-link"
                   >
@@ -20,7 +20,7 @@ export default function NavContainer() {
             <div className="nav-item">
                <button className="btn btn-dark col">
                   <NavLink
-                     exact to="/films" activeClassName="active"
+                     exact to="/films/pages/1" activeClassName="active"
                      className="nav-link"
                   >
                      Films
@@ -30,7 +30,7 @@ export default function NavContainer() {
             <div className="nav-item">
                <button className="btn btn-dark col">
                   <NavLink
-                     exact to="/starships" activeClassName="active"
+                     exact to="/starships/pages/1" activeClassName="active"
                      className="nav-link"
                   >
                      Starships
@@ -40,7 +40,7 @@ export default function NavContainer() {
             <div className="nav-item">
                <button className="btn btn-dark col">
                   <NavLink
-                     exact to="/vehicles" activeClassName="active"
+                     exact to="/vehicles/pages/1" activeClassName="active"
                      className="nav-link"
                   >
                      Vehicles
@@ -50,7 +50,7 @@ export default function NavContainer() {
             <div className="nav-item">
                <button className="btn btn-dark col">
                   <NavLink
-                     exact to="/species" activeClassName="active"
+                     exact to="/species/pages/1" activeClassName="active"
                      className="nav-link"
                   >
                      Species
@@ -60,7 +60,7 @@ export default function NavContainer() {
             <div className="nav-item">
                <button className="btn btn-dark col">
                   <NavLink
-                     exact to="/planets" activeClassName="active"
+                     exact to="/planets/pages/1" activeClassName="active"
                      className="nav-link"
                   >
                      Planets

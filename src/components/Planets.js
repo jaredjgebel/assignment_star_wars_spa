@@ -1,9 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import { Route, withRouter } from 'react-router-dom'
+import PagesContainer from '../containers/PagesContainer'
 import './Planets.css'
 
-const Planets = ({ entries }) => {
+const Planets = ({ entries, match }) => {
    if (!entries[0]) {
       return (
          <div>
@@ -14,7 +15,6 @@ const Planets = ({ entries }) => {
 
    const planets = entries.map((planet, index) => {
       return (
-
          <div className="planet card" key={planet.name}>
             <div className="card-header bg-dark">
                <h2 className="card-title">{`${entries[index].name}`}</h2>
@@ -36,6 +36,10 @@ const Planets = ({ entries }) => {
    })
    return (
       <div className="all-entries container">
+         <Route
+            path={`${match.url}/pages/:page_number`}
+            component={PagesContainer}
+         />
          <h1>Planets</h1>
          <div className="flex-wrapper">
             {planets}

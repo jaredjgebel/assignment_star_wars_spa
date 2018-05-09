@@ -1,0 +1,11 @@
+.page-link {
+   color: goldenrod;
+}
+
+.page-link:hover {
+   color: darkgoldenrod;
+}
+
+.page-item {
+   color: #343A40;
+}

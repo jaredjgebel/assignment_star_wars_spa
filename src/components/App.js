@@ -7,7 +7,6 @@ import {
 } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.css'
 import NavContainer from '../containers/NavContainer';
-import PagesContainer from '../containers/PagesContainer'
 import Planets from './Planets'
 
 const App = ({ entries, pages, singleEntry, ui }) => (
@@ -20,10 +19,7 @@ const App = ({ entries, pages, singleEntry, ui }) => (
       </div>
       <NavContainer />
 
-      <Route
-        path="/"
-        component={PagesContainer}
-      />
+
       <Route
         path="/planets"
         component={Planets}

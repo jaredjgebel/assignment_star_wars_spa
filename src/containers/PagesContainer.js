@@ -1,15 +1,19 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import './PagesContainer.css'
 import LeftButton from '../components/elements/LeftButton'
 import MiddleButton from '../components/elements/MiddleButton'
 import RightButton from '../components/elements/RightButton'
 
-const PagesContainer = ({ pages, ...routeProps }) => {
-   // currentPage, photoQuant, numPerPage
+const PagesContainer = ({ pages, match, ...routeProps }) => {
+
    const currentPath = routeProps.location.pathname
-   console.log(routeProps)
-   const currentPage = 1
+   const pageRegex = new RegExp(/\d+$/)
+   const currentPage = (currentPath !== '/') ? Number(pageRegex.exec(currentPath)[0]) : ''
+   const resourceRegex = new RegExp(/\w+(?=\/pages)/i)
+   const resourceType = (currentPath !== '/') ? resourceRegex.exec(currentPath)[0] : ''
+
    const numPerPage = 10
    const numMiddleButtons = Math.ceil(pages.count / numPerPage)
    const middleButtons = []
@@ -21,16 +25,16 @@ const PagesContainer = ({ pages, ...routeProps }) => {
             pageNumber={(i + 1)}
             active={active}
             key={i}
-            currentPath={currentPath}
+            resourceType={resourceType}
          />
       )
    }
 
    return (
-      <ul className="pagination">
-         <LeftButton currentPage={currentPage} currentPath={currentPath} />
+      <ul className="pagination justify-content-center">
+         <LeftButton currentPage={currentPage} resourceType={resourceType} />
          {middleButtons}
-         <RightButton currentPage={currentPage} lastPage={numMiddleButtons} currentPath={currentPath} />
+         <RightButton currentPage={currentPage} lastPage={numMiddleButtons} resourceType={resourceType} />
       </ul>
    )
 }

@@ -1,15 +1,16 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-const LeftButton = ({ currentPage, currentPath }) => {
-   const href = `${currentPath}/pages/${currentPage - 1}`
+const LeftButton = ({ currentPage, resourceType }) => {
+   const href = `/${resourceType}/pages/${currentPage - 1}`
 
    const liClass = (currentPage === 1) ? "page-item disabled" : "page-item"
 
    return (
       <li className={liClass}>
-         <a className="page-link" href={href}>
+         <Link to={`${href}`} className="page-link" >
             Previous
-         </a>
+         </Link>
       </li>
    )
 }
